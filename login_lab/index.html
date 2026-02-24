@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Login</title>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+$(document).ready(function(){
+
+$("#btnLogin").click(function(){
+
+var usuario = $("#usuario").val();
+var password = $("#password").val();
+
+$.ajax({
+url: "validar.php",
+type: "POST",
+data: {
+usuario: usuario,
+password: password
+},
+success: function(respuesta){
+$("#mensaje").html(respuesta);
+}
+});
+
+});
+
+});
+</script>
+
+</head>
+
+<body>
+
+<h2>Login</h2>
+
+<input type="text" id="usuario" placeholder="Usuario"><br><br>
+<input type="password" id="password" placeholder="Contraseña"><br><br>
+
+<button id="btnLogin">Ingresar</button>
+
+<div id="mensaje"></div>
+
+</body>
+</html>
